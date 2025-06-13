@@ -9,9 +9,7 @@ The carousel uses advanced CSS features like scroll snapping, scroll markers, an
 - **CSS Scroll Snap:** Smooth horizontal scrolling with snap-to-slide behavior.
 - **Scroll Markers & Buttons:** Native scroll markers and navigation buttons (where supported).
 
-<video loop="loop" autoplay="autoplay" width="100%" height="auto" style="max-inline-size: 600px; width: 100%; margin-inline: auto; display: block">
-  <source src="css-carousel-demo.mp4" type="video/mp4">
-</video>
+<img height="auto" width="600px" src="css-carousel-demo.gif" alt="css carousel demo" style="max-inline-size: 600px; width: 100%; margin-inline: auto; display: block;"/>
 
 ## Browser Support
 
