@@ -1,0 +1,161 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: system-ui, serif;
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  background: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/21318308-3b01-4ea4-82bd-9c29b066d329/d37ls1y-4a099d25-30b3-4db5-92e5-7af6319051a8.jpg/v1/fill/w_1024,h_576,q_75,strp/digivice_ipod_lock_screen_by_nekonyuri_d37ls1y-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTc2IiwicGF0aCI6IlwvZlwvMjEzMTgzMDgtM2IwMS00ZWE0LTgyYmQtOWMyOWIwNjZkMzI5XC9kMzdsczF5LTRhMDk5ZDI1LTMwYjMtNGRiNS05MmU1LTdhZjYzMTkwNTFhOC5qcGciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.Rv7_7t8_caIUtYSw6h0tO5fI7k_e-FGoZ6XXaKSopmw')
+    no-repeat center/cover hsl(0 0 5%);
+}
+
+header {
+  padding-block-start: 2rem;
+  h1 {
+    color: whitesmoke;
+    text-shadow: 2px 2px black;
+    text-align: center;
+  }
+}
+
+main {
+  display: grid;
+  place-content: center;
+}
+
+.carousel-wrapper {
+  max-inline-size: 50dvw;
+  overflow-y: hidden;
+  block-size: 500px;
+  max-inline-size: 400px;
+  margin-inline: auto;
+  min-width: 340px;
+}
+
+.carousel {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  gap: 1rem;
+
+  scroll-behavior: smooth;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  anchor-name: --carousel;
+}
+
+.carousel-slide {
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: 100%;
+  overflow: hidden;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  border: 2px solid;
+  border-radius: 15px;
+  scroll-snap-align: center;
+
+  animation: ani linear both;
+  animation-timeline: view(inline);
+  animation-range-start: entry;
+  animation-range-end: cover 40%;
+}
+
+@keyframes ani {
+  from {
+    transform: scale(0.3);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.carousel-scroll-btns {
+  &::scroll-button(*) {
+    position: fixed;
+    position-anchor: --carousel;
+    font-size: 1.5rem;
+    width: 50px;
+    aspect-ratio: 1;
+    border: 2px solid white;
+    border-radius: 100%;
+    bottom: anchor(112%);
+    cursor: pointer;
+    color: white;
+    background: transparent;
+  }
+  &::scroll-button(left) {
+    content: '⬅' / 'Previous';
+    left: anchor(left);
+  }
+  &::scroll-button(right) {
+    content: '⮕' / 'Next';
+    right: anchor(right);
+  }
+}
+
+.carousel-scroll-markers {
+  scroll-marker-group: after;
+
+  &::scroll-marker-group {
+    position: fixed;
+    position-anchor: --carousel;
+    position-area: block-end;
+    margin: 20px;
+    bottom: anchor(top);
+
+    display: grid;
+    grid-auto-columns: 20px;
+    grid-auto-flow: column;
+    gap: 1rem;
+  }
+
+  > .carousel-slide {
+    &::scroll-marker {
+      content: '' / attr(data-label);
+      border: 2px solid whitesmoke;
+      border-radius: 100%;
+      aspect-ratio: 1;
+      width: 20px;
+    }
+    &::scroll-marker:target-current {
+      background: whitesmoke;
+    }
+    &::scroll-marker:target-current:focus-visible {
+      outline-offset: 0.3rem;
+      transition-duration: 0.25s;
+
+      background: dodgerblue;
+    }
+  }
+}
+
+footer {
+  padding-block-end: 1rem;
+  text-align: center;
+  small {
+    a {
+      color: orange;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :focus-visible {
+    transition: outline-offset 75ms ease-out;
+  }
+  :not(:active):focus-visible {
+    transition-duration: 0.25s;
+  }
+}
