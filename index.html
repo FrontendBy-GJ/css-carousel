@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Carousel</title>
+    <meta
+      name="description"
+      content="A pure CSS carousel featuring Digimon characters, demonstrating a JavaScript-free image slider."
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>CSS Carousel (No JS!)</h1>
+    </header>
+    <main>
+      <div class="carousel-wrapper">
+        <ul class="carousel carousel-scroll-btns carousel-scroll-markers"></ul>
+      </div>
+    </main>
+    <footer>
+      <small
+        ><a href="https://github.com/FrontendBy-GJ">FrontendBy-GJ</a></small
+      >
+    </footer>
+
+    <script>
+      const digimons = [
+        {
+          name: 'Agumon',
+          img: 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0ce1a2ba-bb8e-489f-94dc-92b3f196c4c4/d8o8014-06d9fa14-9bd2-4aab-b03b-ef67e9d6fa6d.png/v1/fill/w_1024,h_1190/s1_agumon_by_sarahrichford_d8o8014-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTE5MCIsInBhdGgiOiJcL2ZcLzBjZTFhMmJhLWJiOGUtNDg5Zi05NGRjLTkyYjNmMTk2YzRjNFwvZDhvODAxNC0wNmQ5ZmExNC05YmQyLTRhYWItYjAzYi1lZjY3ZTlkNmZhNmQucG5nIiwid2lkdGgiOiI8PTEwMjQifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.fPpq67qpcOnSXts9TehwipjQI8ULBX_ePcgLkqZUrMA',
+          color: '#f01c04',
+        },
+        {
+          name: 'Gabumon',
+          img: 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0ce1a2ba-bb8e-489f-94dc-92b3f196c4c4/d8pd12i-1a5ac7a8-b055-4f4d-ae14-497accb3e191.png/v1/fill/w_1024,h_1269/s1_gabumon_by_sarahrichford_d8pd12i-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTI2OSIsInBhdGgiOiJcL2ZcLzBjZTFhMmJhLWJiOGUtNDg5Zi05NGRjLTkyYjNmMTk2YzRjNFwvZDhwZDEyaS0xYTVhYzdhOC1iMDU1LTRmNGQtYWUxNC00OTdhY2NiM2UxOTEucG5nIiwid2lkdGgiOiI8PTEwMjQifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.KXPsQ0w-FjUs9kryxek0z1CrRzhTkvp1lGkOv6Ivw8k',
+          color: '#303880',
+        },
+        {
+          name: 'Gomamon',
+          img: 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0ce1a2ba-bb8e-489f-94dc-92b3f196c4c4/d8xogrs-b62bf590-e62c-4dc8-b956-4431d96b01c6.png/v1/fill/w_600,h_589/s1_gomamon_by_sarahrichford_d8xogrs-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTg5IiwicGF0aCI6IlwvZlwvMGNlMWEyYmEtYmI4ZS00ODlmLTk0ZGMtOTJiM2YxOTZjNGM0XC9kOHhvZ3JzLWI2MmJmNTkwLWU2MmMtNGRjOC1iOTU2LTQ0MzFkOTZiMDFjNi5wbmciLCJ3aWR0aCI6Ijw9NjAwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.C-FVZZ26uwHsHVDjjBCQBj9uYpxecvYcyAQO8r1RNCg',
+          color: '#2a97c4',
+        },
+        {
+          name: 'Tentomon',
+          img: 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0ce1a2ba-bb8e-489f-94dc-92b3f196c4c4/d8szgzn-8b6eaa9b-fa3e-4da5-9462-c1b80a35d123.png/v1/fill/w_1280,h_1645/s1_tentomon_by_sarahrichford_d8szgzn-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTY0NSIsInBhdGgiOiJcL2ZcLzBjZTFhMmJhLWJiOGUtNDg5Zi05NGRjLTkyYjNmMTk2YzRjNFwvZDhzemd6bi04YjZlYWE5Yi1mYTNlLTRkYTUtOTQ2Mi1jMWI4MGEzNWQxMjMucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.DomLAXysy0_qYZvHJDTJP-8DKGksdQCe35Gyda4mFhc',
+          color: '#8acb2e',
+        },
+        {
+          name: 'Patamon',
+          img: 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0ce1a2ba-bb8e-489f-94dc-92b3f196c4c4/d90ams1-5410bb00-4c98-4079-8188-82d8d0f3d595.png/v1/fill/w_800,h_924/s1_patamon_by_sarahrichford_d90ams1-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9OTI0IiwicGF0aCI6IlwvZlwvMGNlMWEyYmEtYmI4ZS00ODlmLTk0ZGMtOTJiM2YxOTZjNGM0XC9kOTBhbXMxLTU0MTBiYjAwLTRjOTgtNDA3OS04MTg4LTgyZDhkMGYzZDU5NS5wbmciLCJ3aWR0aCI6Ijw9ODAwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0._6CKZSrH_Bck3uUnBayPbRXxUV1T-wNA5NP7KVUFsi4',
+          color: '#fee885',
+        },
+        {
+          name: 'Palmon',
+          img: 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0ce1a2ba-bb8e-489f-94dc-92b3f196c4c4/d8v2ml6-3b1525e2-b0b6-4ab5-a23d-ac5cc1c88682.png/v1/fill/w_1024,h_1324/s1_palmon_by_sarahrichford_d8v2ml6-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTMyNCIsInBhdGgiOiJcL2ZcLzBjZTFhMmJhLWJiOGUtNDg5Zi05NGRjLTkyYjNmMTk2YzRjNFwvZDh2Mm1sNi0zYjE1MjVlMi1iMGI2LTRhYjUtYTIzZC1hYzVjYzFjODg2ODIucG5nIiwid2lkdGgiOiI8PTEwMjQifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.VnsRz6ceO3ytv7ycZBac9dUdiU8UfOQF_BHGLBdPyLI',
+          color: '#16ad02',
+        },
+        {
+          name: 'Biyomon',
+          img: 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0ce1a2ba-bb8e-489f-94dc-92b3f196c4c4/d8r04cq-854444c1-371b-47b6-a76a-69fe4aa3b7dc.png/v1/fill/w_600,h_562/s1_biyomon_by_sarahrichford_d8r04cq-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzBjZTFhMmJhLWJiOGUtNDg5Zi05NGRjLTkyYjNmMTk2YzRjNFwvZDhyMDRjcS04NTQ0NDRjMS0zNzFiLTQ3YjYtYTc2YS02OWZlNGFhM2I3ZGMucG5nIiwiaGVpZ2h0IjoiPD01NjIiLCJ3aWR0aCI6Ijw9NjAwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLndhdGVybWFyayJdLCJ3bWsiOnsicGF0aCI6Ilwvd21cLzBjZTFhMmJhLWJiOGUtNDg5Zi05NGRjLTkyYjNmMTk2YzRjNFwvc2FyYWhyaWNoZm9yZC00LnBuZyIsIm9wYWNpdHkiOjk1LCJwcm9wb3J0aW9ucyI6MC40NSwiZ3Jhdml0eSI6ImNlbnRlciJ9fQ.OhI7DLJQZkdKlNxbZYAdzw2oTbosW5kAeKG0Lw_MscY',
+          color: '#c43a5c',
+        },
+      ];
+
+      const carousel = document.querySelector('.carousel');
+      for (let i = 0; i < digimons.length; i++) {
+        const li = document.createElement('li');
+        li.classList.add('carousel-slide');
+        li.style.borderColor = digimons[i].color;
+        li.style.background = `linear-gradient(transparent,${digimons[i].color})`;
+        li.setAttribute('data-slide', `Slide ${i + 1}`);
+        li.innerHTML = `<img src="${digimons[i].img}" alt="${digimons[i].name}" />`;
+        carousel.appendChild(li);
+      }
+    </script>
+  </body>
+</html>
